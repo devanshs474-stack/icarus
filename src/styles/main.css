@@ -1,0 +1,490 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   ICARUS — art direction: obsidian black, deep Aegean blue, warm marble
+   white, molten gold. Cinzel for display, Cormorant Garamond for story,
+   Inter for captions.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --obsidian: #06080c;
+  --aegean: #0d2436;
+  --marble: #e8e6df;
+  --gold: #e8c46b;
+  --gold-deep: #8a6a2f;
+  --ink-dim: #9aa7b4;
+  --line: #232c3a;
+
+  --font-display: 'Cinzel', serif;
+  --font-story: 'Cormorant Garamond', Georgia, serif;
+  --font-caption: 'Inter', system-ui, sans-serif;
+}
+
+/* Lenis recommended styles (see the Lenis README). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--obsidian);
+  color: var(--marble);
+  overflow-x: clip; /* clip (not hidden): keeps position: sticky working */
+}
+
+html {
+  scrollbar-color: var(--line) transparent;
+}
+
+html.is-loading {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-story);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--obsidian);
+}
+
+/* ── Canvas & fallback ────────────────────────────────────────────────────── */
+
+#gl {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+}
+
+#webgl-fallback {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  z-index: 30;
+  text-align: center;
+  font-family: var(--font-caption);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink-dim);
+  padding: 0 24px;
+}
+
+.noscript-note {
+  position: fixed;
+  inset: auto 0 40% 0;
+  z-index: 300;
+  text-align: center;
+  font-family: var(--font-caption);
+  color: var(--marble);
+}
+
+/* ── Skip link ─────────────────────────────────────────────────────────────── */
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  background: var(--gold);
+  color: var(--obsidian);
+  font-family: var(--font-caption);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 3px;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ── Loading screen ───────────────────────────────────────────────────────── */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--obsidian);
+  display: grid;
+  place-items: center;
+}
+
+.loader__inner {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  width: min(320px, 70vw);
+}
+
+.loader__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.32em;
+  margin-left: 0.32em; /* optical centering of tracking */
+  color: var(--gold);
+}
+
+.loader__track {
+  width: 100%;
+  height: 2px;
+  background: var(--line);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loader__fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.loader__label {
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* ── Chapter spine ────────────────────────────────────────────────────────── */
+
+#story {
+  position: relative;
+  z-index: 10;
+}
+
+.chapter {
+  position: relative;
+}
+
+.chapter__overlay {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 clamp(20px, 6vw, 96px);
+  pointer-events: none;
+}
+
+.kicker {
+  font-family: var(--font-caption);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 18px;
+}
+
+#icarus-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(44px, 11vw, 150px);
+  line-height: 1.05;
+  letter-spacing: 0.32em;
+  margin: 0 0 28px;
+}
+
+/* Gold light sweep across the letters (animated via GSAP background-position). */
+.title-sweep {
+  background-image: linear-gradient(
+    105deg,
+    #6b5a33 0%,
+    var(--gold) 38%,
+    #fff3d0 50%,
+    var(--gold) 62%,
+    #6b5a33 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--gold); /* fallback when background-clip: text is unsupported */
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .title-sweep {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.chapter__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(30px, 5vw, 64px);
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  margin: 0 0 26px;
+  max-width: 18em;
+}
+
+.lede {
+  font-size: clamp(18px, 2.4vw, 26px);
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+}
+
+.story-p {
+  font-size: clamp(19px, 2.2vw, 28px);
+  line-height: 1.65;
+  font-weight: 500;
+  max-width: 34em;
+  margin: 0.35em 0;
+}
+
+.counsel {
+  font-style: italic;
+  color: var(--gold);
+  font-size: clamp(21px, 2.6vw, 32px);
+  line-height: 1.6;
+  max-width: 30em;
+}
+
+.caption {
+  font-family: var(--font-caption);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+  color: var(--ink-dim);
+  margin: 30px 0 0;
+  max-width: 46em;
+}
+
+/* SplitText line masks */
+.line-mask {
+  overflow: hidden;
+}
+
+.st-line {
+  display: block;
+  will-change: transform;
+}
+
+/* ── Scroll cue ───────────────────────────────────────────────────────────── */
+
+.scroll-cue {
+  margin-top: 56px;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.scroll-cue__label {
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.scroll-cue__line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-cue__line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--marble);
+  animation: cue-drop 2.2s ease-in-out infinite;
+}
+
+@keyframes cue-drop {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* ── Progress rail ────────────────────────────────────────────────────────── */
+
+#progress-rail {
+  position: fixed;
+  right: clamp(14px, 2.6vw, 34px);
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rail__track {
+  position: relative;
+  width: 1px;
+  height: 46vh;
+  min-height: 220px;
+  background: var(--line);
+}
+
+.rail__marker {
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: calc(var(--p, 0) * 100%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px 2px rgba(232, 196, 107, 0.45);
+}
+
+.rail__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  text-align: right;
+}
+
+.rail__list a {
+  font-family: var(--font-caption);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #55627a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.rail__list a:hover {
+  color: var(--marble);
+}
+
+.rail__list a.is-active {
+  color: var(--gold);
+}
+
+@media (max-width: 760px) {
+  #progress-rail {
+    display: none;
+  }
+}
+
+/* ── Letterbox bars (cinematic beats; height driven by --letterbox) ───────── */
+
+#letterbox {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}
+
+.letterbox__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: calc(var(--letterbox, 0) * 7vh);
+  background: #000;
+}
+
+.letterbox__bar--top {
+  top: 0;
+}
+
+.letterbox__bar--bottom {
+  bottom: 0;
+}
+
+/* ── Chapter dip: fades to black at chapter boundaries; the camera cut and
+   grade swap happen while the screen is dark ─────────────────────────────── */
+
+#fade {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: var(--dip, 0);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Bright-sky chapters (VI Euphoria, VII The Sun): dark ink so the text
+   stays readable against the near-white gold sky. */
+.chapter--bright .chapter__title,
+.chapter--bright .story-p {
+  color: #232f3d;
+}
+
+.chapter--bright .kicker {
+  color: var(--gold-deep);
+}
+
+/* ── Gold dust cursor trail (canvas above everything, no pointer capture) ── */
+
+#cursor-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  mix-blend-mode: screen;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cue__line::after {
+    animation: none;
+  }
+  .st-line {
+    will-change: auto;
+  }
+}
