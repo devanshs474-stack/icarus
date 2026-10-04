@@ -64,6 +64,19 @@ Exact versions, checked against the npm registry and published artifacts
   enter/handoff windows, chapter rail with sun marker, letterbox bars during
   the Labyrinth and The Fall.
 
+## Deploy (GitHub Pages)
+
+The site lives at https://devanshs474-stack.github.io/icarus/ (project repo:
+devanshs474-stack/icarus). Source is on `main`; the built site is force-pushed
+to the `gh-pages` branch under the `/icarus/` subpath.
+
+```bash
+npm run deploy    # builds with BASE_PATH=/icarus/ and pushes dist/ to gh-pages
+```
+
+Requires push access and GitHub Pages enabled on the `gh-pages` branch
+(already configured).
+
 ## Tuning
 
 Everything lives in `src/config.js`: chapter heights, camera keys, Icarus
