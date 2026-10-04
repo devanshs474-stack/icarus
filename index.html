@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The myth of Icarus, told as a cinematic scroll: wings of feathers and wax, a father's warning, a flight too near the sun." />
+  <meta name="theme-color" content="#06080c" />
+  <title>Icarus — The Fall</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2306080c'/%3E%3Ccircle cx='32' cy='24' r='10' fill='%23e8c46b'/%3E%3Cpath d='M8 46 Q32 58 56 46' stroke='%237aa0c4' stroke-width='4' fill='none'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/icarus/assets/index-8ilwaNDv.js"></script>
+  <link rel="stylesheet" crossorigin href="/icarus/assets/index-o-kTNi1E.css">
+</head>
+<body>
+  <a class="skip-link" href="#story">Skip to the story</a>
+
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <div id="webgl-fallback" hidden>
+    <p>This experience wants WebGL2, which this browser doesn&rsquo;t provide &mdash; but the story itself needs nothing but words. Scroll on.</p>
+  </div>
+
+  <div id="loader" role="status" aria-live="polite">
+    <div class="loader__inner">
+      <span class="loader__title">ICARUS</span>
+      <div class="loader__track">
+        <div class="loader__fill"></div>
+      </div>
+      <span class="loader__label">Gathering feathers&hellip;</span>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="noscript-note">This telling of Icarus needs JavaScript for its moving parts. The words, however, are yours regardless.</p>
+  </noscript>
+
+  <main id="story">
+
+    <section class="chapter chapter--prologue" id="ch1" data-chapter="1" aria-label="Prologue">
+      <div class="chapter__overlay">
+        <p class="kicker">I &mdash; Prologue</p>
+        <h1 class="title-sweep" id="icarus-title">ICARUS</h1>
+        <p class="lede">A myth of wings and wax, told as you fall.</p>
+        <div class="scroll-cue" aria-hidden="true">
+          <span class="scroll-cue__label">Scroll to begin</span>
+          <span class="scroll-cue__line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confinement follows Apollodorus (Epitome 1.12–13: Daedalus and Icarus
+         imprisoned in the Labyrinth). Ovid, Metamorphoses VIII, keeps the
+         confinement on Crete but vaguer; the Labyrinth is chosen to match this
+         chapter. All chapter text is original paraphrase, not quotation. -->
+    <section class="chapter" id="ch2" data-chapter="2" aria-label="The Labyrinth">
+      <div class="chapter__overlay">
+        <p class="kicker">II &mdash; The Labyrinth</p>
+        <h2 class="chapter__title">A Prison With No Door</h2>
+        <p class="story-p">King Minos of Crete would not forgive the craftsman Daedalus for the help he once gave a hero. So the king shut the architect away inside his own masterpiece &mdash; the Labyrinth &mdash; together with his young son, Icarus.</p>
+        <p class="story-p">The maze that had been built to be un-walkable worked exactly as designed. There was no path out. The sea watched the island, the sky said nothing, and a father began to think about both.</p>
+        <p class="caption">After the classical tellings of Ovid and Apollodorus &mdash; retold here in our own words.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch3" data-chapter="3" aria-label="The Wings">
+      <div class="chapter__overlay">
+        <p class="kicker">III &mdash; The Wings</p>
+        <h2 class="chapter__title">Feathers, Thread and Wax</h2>
+        <p class="story-p">Daedalus had never met a prison that could hold his hands. In the torchlight he worked: feathers gathered and sorted by length, linen thread, beeswax warmed soft, a light wooden frame laid across his knees.</p>
+        <p class="story-p">Layer upon layer the wings grew &mdash; the small feathers first, then the long flight feathers &mdash; all stitched and sealed with wax, until two great pinions stood ready to carry a man into the open air.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch4" data-chapter="4" aria-label="The Warning">
+      <div class="chapter__overlay">
+        <p class="kicker">IV &mdash; The Warning</p>
+        <h2 class="chapter__title">The Middle Course</h2>
+        <p class="story-p">At dawn, Daedalus bound the wings to his son&rsquo;s shoulders and gave him one instruction &mdash; the only one that mattered.</p>
+        <p class="story-p counsel">Fly the middle course. Not too low, or the sea&rsquo;s spray will soak your wings. Not too high, or the sun&rsquo;s fire will melt them. Stay between, and stay with me.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="ch5" data-chapter="5" aria-label="Takeoff">
+      <div class="chapter__overlay">
+        <p class="kicker">V &mdash; Takeoff</p>
+        <h2 class="chapter__title">The Leap</h2>
+        <p class="story-p">Then the ground let go. Icarus stepped off the cliff into the wind, and the air caught him the way water catches a swimmer.</p>
+        <p class="story-p">Below, the sea opened dark and shining. Gulls scattered around him. Behind him his father&rsquo;s voice, already smaller, was still repeating the same words.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter--bright" id="ch6" data-chapter="6" aria-label="Euphoria">
+      <div class="chapter__overlay">
+        <p class="kicker">VI &mdash; Euphoria</p>
+        <h2 class="chapter__title">The Boy Who Could Fly</h2>
+        <p class="story-p">Nothing in his short life had ever felt like this. Every beat of the wings lifted him higher, and the world below flattened into map and memory.</p>
+        <p class="story-p">He laughed into the wind and climbed through the clouds. The dawn warmed to gold around him. The sky seemed to be opening just for him &mdash; and a boy who has just learned to fly thinks only of more.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter--bright" id="ch7" data-chapter="7" aria-label="The Sun">
+      <div class="chapter__overlay">
+        <p class="kicker">VII &mdash; The Sun</p>
+        <h2 class="chapter__title">Too Near the Fire</h2>
+        <p class="story-p">Higher. The warning was left somewhere far below, with the ships and the islands and everything small. He aimed himself at the sun as if it were a gate.</p>
+        <p class="story-p">The first feather slipped loose and turned away beneath him. Then another. He did not notice. The wax was already softening in his hands.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter--fall" id="ch8" data-chapter="8" aria-label="The Fall">
+      <div class="chapter__overlay">
+        <p class="kicker">VIII &mdash; The Fall</p>
+        <h2 class="chapter__title">The Wings Come Apart</h2>
+        <p class="story-p">The heat took the wings apart gently, the way a season takes a tree. Feathers peeled away into the bright air, each one small and white and gone.</p>
+        <p class="story-p">He beat his bare arms against the wind, and the wind did not know him. The sea rushed upward &mdash; blue, and patient, and very close now.</p>
+        <p class="story-p">Far above, a father circled and called a name that nothing answered.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter--sea" id="ch9" data-chapter="9" aria-label="The Sea">
+      <div class="chapter__overlay">
+        <p class="kicker">IX &mdash; The Sea</p>
+        <h2 class="chapter__title">Without a Sound</h2>
+        <p class="story-p">The sea received him without a sound.</p>
+        <p class="story-p">Where he fell, the water folded closed, and a slow ring of feathers drifted out across the surface.</p>
+      </div>
+    </section>
+
+    <section class="chapter chapter--epilogue" id="ch10" data-chapter="10" aria-label="Epilogue">
+      <div class="chapter__overlay">
+        <p class="kicker">X &mdash; Epilogue</p>
+        <h2 class="chapter__title">The Sea Keeps His Name</h2>
+        <p class="story-p">Sailors came to call that stretch of water the Icarian Sea, and the island nearby still keeps his name &mdash; Icaria. What the father could not hold, the water holds.</p>
+        <p class="story-p">A boy who flew. A father who warned him. A sea that remembers. That is the whole of the story &mdash; scroll back to the top and it begins again.</p>
+        <!-- "Replay the myth" button is added in Phase 4, wired to scroll to top. -->
+      </div>
+    </section>
+
+  </main>
+
+  <nav id="progress-rail" aria-label="Chapters"></nav>
+
+  <div id="letterbox" aria-hidden="true">
+    <div class="letterbox__bar letterbox__bar--top"></div>
+    <div class="letterbox__bar letterbox__bar--bottom"></div>
+  </div>
+
+  <div id="fade" aria-hidden="true"></div>
+
+</body>
+</html>
